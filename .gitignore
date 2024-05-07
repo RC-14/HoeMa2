@@ -1,0 +1,16 @@
+# MacOS stuff
+.DS_Store
+
+# Temp. dir. or smth.?
+*.dSYM
+
+# Compiled output
+main
+
+# PDFs, includes and code samples etc. (avoid copy right trouble)
+*.pdf
+include
+CodeSamples
+catch.h
+*Test.cpp
+*.csv
