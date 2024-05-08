@@ -98,7 +98,7 @@ CMyVektor gradient(CMyVektor x, double (*f)(CMyVektor x)) {
 
 	for (unsigned i = 0; i < g.getSize(); i++) {
 		CMyVektor tmp = x;
-		tmp.setIndex(i, tmp[i] + h);
+		tmp[i] = tmp[i] + h;
 
 		g[i] = (f(tmp) - f(x)) / h;
 	}
