@@ -1,0 +1,33 @@
+{
+	"tasks": [
+		{
+			"type": "shell",
+			"label": "C/C++: Compile",
+			"command": "g++",
+			"args": [
+				"-g",
+				"-std=c++17",
+				"-stdlib=libc++",
+				"-Wall",
+				"-Wno-c++11-narrowing",
+				"-fdiagnostics-color=always",
+				"-I.",
+				"-I/opt/X11/include",
+				"-L/opt/X11/lib",	  
+				"-o",
+				"main",
+				"*.cpp",
+				"-lX11",
+				"-pthread"
+			],
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
+		}
+	],
+	"version": "2.0.0"
+}
