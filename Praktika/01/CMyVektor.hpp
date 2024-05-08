@@ -121,9 +121,16 @@ CMyVektor gradMax(CMyVektor x, double (*f)(CMyVektor x), double lambda = 1) {
 		CMyVektor nextX = lambda * tmp + x;
 
 		if (f(nextX) <= f(x)) {
-			lambda /= 2;
+			while (f(nextX) <= f(x)) {
+				lambda /= 2;
+				nextX = lambda * tmp + x;
+			}
 		} else {
 			lambda *= 2;
+			x = lambda * tmp + x;
+
+			if (f(x) > f(nextX)) continue;
+			lambda /= 2;
 		}
 
 		x = nextX;
