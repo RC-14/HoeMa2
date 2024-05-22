@@ -18,20 +18,6 @@ CMyVektor a3_f(CMyVektor x) {
 	return result;
 }
 
-CMyVektor f(CMyVektor x) {
-	CMyVektor result(2);
-	result[0] = x[0] * x[0] * x[1] + x[0] - 4;
-	result[1] = 3 * x[1] * x[1] + 2 * x[0] + 1;
-	return result;
-}
-
-CMyVektor f2(CMyVektor v) {
-    CMyVektor erg(2);
-    erg[0] = v[0] * v[0] * v[1] - 2 * v[0] + 2;
-    erg[1] = 2 * v[1] * v[1] - v[1] + 2;
-    return erg;
-}
-
 int main() {
 	CMyMatrix m(2, 2);
 
