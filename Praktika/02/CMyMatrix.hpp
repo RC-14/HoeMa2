@@ -24,7 +24,12 @@ public:
 
 		CMyMatrix m(data.size());
 
-		double magicNumber = 1 / (data[0][0] * data[1][1] - data[0][1] * data[1][0]);
+		double det = (data[0][0] * data[1][1] - data[0][1] * data[1][0]);
+		if (det == 0) {
+			std::cout << "Determinante = 0" << std::endl;
+			throw;
+		}
+		double magicNumber = 1 / det;
 
 		m.data[0][0] = magicNumber * data[1][1];
 		m.data[0][1] = magicNumber * -data[0][1];
@@ -51,8 +56,6 @@ public:
 	double& operator[](std::pair<unsigned, unsigned> v) {
 		return data[v.first][v.second];
 	}
-
-	CMyMatrix jacobi(CMyVektor x, CMyVektor(*function)(CMyVektor x));
 
 	friend std::ostream& operator<<(std::ostream& stream, const CMyMatrix& matrix);
 };
@@ -116,14 +119,14 @@ const double h_matrix = .0001;
 
 CMyMatrix jacobi(CMyVektor x, CMyVektor(*function)(CMyVektor x)) {
 	unsigned m = x.getSize();
-	unsigned n = function(x).getSize();
+	CMyVektor f_x = function(x);
+	unsigned n = f_x.getSize();
 	CMyMatrix jacobiMatrix(m, n);
 
 	for (unsigned i = 0; i < m; i++) {
 		CMyVektor x_h = x;
 		x_h[i] += h_matrix;
 		CMyVektor f_x_h = function(x_h);
-		CMyVektor f_x = function(x);
 
 		for (unsigned j = 0; j < n; j++) {
 			jacobiMatrix[{j, i}] = (f_x_h[j] - f_x[j]) / h_matrix;
@@ -147,9 +150,9 @@ CMyVektor newtonMethod(CMyVektor x, CMyVektor(*function)(CMyVektor x)) {
 
 		CMyMatrix J = jacobi(x, function);
 		CMyMatrix J_inv = J.invers();
-		CMyVektor delta_x = J_inv * F;
+		CMyVektor delta_x = J_inv * F * -1;
 
-		x = x + -1 * delta_x;
+		x = x + delta_x;
 	}
 
 	return x;
