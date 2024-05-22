@@ -34,9 +34,5 @@ int main() {
 
 	cout << newtonMethod(CMyVektor({ 1,1 }), a3_f) << endl;
 
-	cout << endl << endl << endl;
-
-	cout << newtonMethod(CMyVektor({ -1, 0 }), f) << endl;
-
 	return 0;
 }
