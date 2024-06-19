@@ -1,0 +1,33 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "C/C++: Debug internal (custom)",
+			"preLaunchTask": "C/C++: Compile",
+			"type": "lldb",
+			"request": "launch",
+			"program": "main",
+			"cwd": "${workspaceRoot}",
+			"internalConsoleOptions": "neverOpen"
+		},
+		{
+			"name": "C/C++: Debug (GIP default)",
+			"preLaunchTask": "C/C++: Compile",
+			"type": "cppdbg",
+			"request": "launch",
+			"program": "main",
+			"cwd": "${workspaceRoot}",
+			"externalConsole": true,
+			"logging": {
+				"moduleLoad": false,
+				"programOutput": false,
+				"trace": false,
+				"engineLogging": false
+			},
+			"showDisplayString": false,
+			"osx": {
+				"MIMode": "lldb"
+			}
+		}
+	]
+}
